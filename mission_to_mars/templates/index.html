@@ -42,7 +42,7 @@
 
                 <!--Mars Facts table: Right-->
                 <div class="col-md-4" id="table-title">
-                    Mars Facts
+                    <h2>Mars Facts</h2>
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr style="text-align: center;">
@@ -99,16 +99,19 @@
                 </div>
             </div>
 
+            <div class="row">
             {% for x in dict.hemisphere_image_urls %}
             <!--Hemispheres Picture Gallery-->
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ x.img_url }}" alt="{{ x.title }}">
-                <div class="card-body">
-                <p class="card-text">{{ x.title }}</p>
+                <div class="col-md-3">
+                    <div class="card" style="width: 12rem;">
+                        <img class="card-img-top" src="{{ x.img_url }}" alt="{{ x.title }}">
+                        <div class="card-body">
+                            <p class="card-text">{{ x.title }}</p>
+                        </div>
+                    </div>  
+                </div>
+                {% endfor %} 
             </div>
-            {% endfor %} 
-        </div>  
-
         </div>
     </body>
 

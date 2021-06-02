@@ -111,7 +111,7 @@ def scrape_data():
     # Get the 4 descriptions for the website - h3
     descriptions = soup.find_all('h3', limit=4)
 
-  
+
 
     # Iterate through the descriptions
     for title in descriptions:
