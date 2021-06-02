@@ -4,6 +4,7 @@ import requests
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
+import time
 
 # Scrape function
 def scrape_data():
@@ -97,6 +98,9 @@ def scrape_data():
     # Define the url
     url = 'https://marshemispheres.com/'
 
+    # Visit the url
+    browser.visit(url)
+
     # Access the html and parse through it
     html = browser.html
     soup = bs(html, 'html.parser')
@@ -107,8 +111,7 @@ def scrape_data():
     # Get the 4 descriptions for the website - h3
     descriptions = soup.find_all('h3', limit=4)
 
-    # Visit the url
-    browser.visit(url)
+  
 
     # Iterate through the descriptions
     for title in descriptions:
@@ -144,7 +147,12 @@ def scrape_data():
         # Navigate back to the main page
         browser.back()
 
+        time.sleep(2)
+
         print(hemisphere_image_urls)
+
+    # close the browser
+    browser.quit()
 
     # Put all dictionaries together
     mars_data = {
@@ -157,5 +165,3 @@ def scrape_data():
     # Return results
     return mars_data
 
-if __name__ == "main":
-    app.run(debug=True)

@@ -7,25 +7,28 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
 
     <body>
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
                 <!--Title Container-->
-                <div class="col-md-12" id="main-title">
-                    Mission to Mars
+                <div class="jumbotron text-center" id="main-title">
+                    <h1>Mission to Mars</h1>
+                    <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape for Mars Data</a></p>
                 </div>
-            </div>
         </div>
+
+        
 
         <div class="container">
             <div class="row">
                 <!--Latest Mars News container-->
                 <div class="col-md-12" id="item-title">
-                    Latest Mars News
+                    <h2>Latest Mars News</h2>
                 </div>
+                <h3>{{ dict.mars_news.news_title }}</h3>
+                <p>{{ dict.mars_news.news_paragraph }}</p>
             </div>
         </div>
 
@@ -33,8 +36,10 @@
             <div class="row">
                 <!--Featured Mars Image: Left-->
                 <div class="col-md-8" id="item-title">
-                    Featured Mars Image
+                    <h2>Featured Mars Image</h2>
                 </div>
+                <img src="{{ dict.jpl_feat_image.feat_image_url }}"/>
+
                 <!--Mars Facts table: Right-->
                 <div class="col-md-4" id="table-title">
                     Mars Facts
@@ -87,18 +92,23 @@
         </div>
 
         <div class="container">
-            <!--Title for Moon Picture Gallery-->
+            <!--Title for Hemispheres Picture Gallery-->
             <div class="row">
                 <div class="col-md-12" id="item-title">
-                    Mars Hemispheres
+                    <h2>Mars Hemispheres</h2>
                 </div>
             </div>
-            <!--Moon Picture Gallery-->
-            <div class="row">
-                <div class="col-md-12" id="moon-pictures">
 
-                </div>
+            {% for x in dict.hemisphere_image_urls %}
+            <!--Hemispheres Picture Gallery-->
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ x.img_url }}" alt="{{ x.title }}">
+                <div class="card-body">
+                <p class="card-text">{{ x.title }}</p>
             </div>
+            {% endfor %} 
+        </div>  
+
         </div>
     </body>
 
