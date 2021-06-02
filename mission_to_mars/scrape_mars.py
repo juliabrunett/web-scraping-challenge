@@ -1,21 +1,16 @@
 # Import dependenices
-from flask import Flask, render_template
 from bs4 import BeautifulSoup as bs
 import requests
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 
-# Initialize app
-app = Flask(__name__)
-
-# Create executable path to open a browser for the scraping: using WebDriver Manager
-executable_path = {'executable_path': ChromeDriverManager().install()}
-browser = Browser('chrome', **executable_path, headless=False)
-
 # Scrape function
-@app.route("/scrape")
-def scrape():
+def scrape_data():
+    # Create executable path to open a browser for the scraping: using WebDriver Manager
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+
     #1
     # Define the url 
     url = 'https://redplanetscience.com/'  
@@ -34,9 +29,14 @@ def scrape():
         # Grab the title and paragraph text
         news_title = container.find('div', class_='content_title').text
         news_p = container.find('div', class_='article_teaser_body').text
-    
-        print(news_title)
-        print(news_p)
+
+        # Add data to a dictionary
+        mars_news = {
+            "news_title": news_title,
+            "news_paragraph": news_p
+        }
+
+        print(mars_news)
 
     #2
     # Url for jpl images
@@ -63,8 +63,13 @@ def scrape():
         # Grab the featured image url
         featured_image_url = box['href']
         featured_image_url = url + featured_image_url
-    
-        print(featured_image_url)
+
+        # Create a dictionary for the data
+        jpl_feat_image = {
+            "feat_image_url": featured_image_url
+        }
+        
+        print(jpl_feat_image)
     
     #3
     # Url for table facts
@@ -72,7 +77,6 @@ def scrape():
 
     # Find table data and load into pandas
     tables = pd.read_html(url)
-    print(tables)
 
     # Create a dataframe from the first table
     mars_earth_df = tables[0]
@@ -80,6 +84,14 @@ def scrape():
     mars_earth_df = mars_earth_df.set_index("Mars - Earth Comparison")
     mars_earth_df = mars_earth_df.iloc[1:]
     print(mars_earth_df)
+
+    # Create html table for mars facts
+    html_table = mars_earth_df.to_html()
+
+    # Create a dictionary for the html table
+    mars_facts = {
+        "table": html_table
+    }
 
     #4
     # Define the url
@@ -133,6 +145,17 @@ def scrape():
         browser.back()
 
         print(hemisphere_image_urls)
-        
+
+    # Put all dictionaries together
+    mars_data = {
+        "mars_news": mars_news,
+        "jpl_feat_image": jpl_feat_image,
+        "mars_facts": mars_facts,
+        "hemisphere_image_urls": hemisphere_image_urls
+    }
+
+    # Return results
+    return mars_data
+
 if __name__ == "main":
     app.run(debug=True)
