@@ -7,91 +7,60 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
+        <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='../static/styles.css') }}">
+        <link rel="stylesheet" href= "../static/styles.css">
+    
+      </head>
 
     <body>
+        <!--Title Container-->
         <div class="container-fluid">
-                <!--Title Container-->
+                <!--Main Title-->
                 <div class="jumbotron text-center" id="main-title">
                     <h1>Mission to Mars</h1>
-                    <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape for Mars Data</a></p>
+                    <!--Scrape Button-->
+                    <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape for the Latest Mars Data</a></p>
                 </div>
         </div>
 
         
-
-        <div class="container">
+        <!--Latest Mars News container-->
+        <div class="container" id="mars-news">
             <div class="row">
-                <!--Latest Mars News container-->
+                <!--News title-->
                 <div class="col-md-12" id="item-title">
                     <h2>Latest Mars News</h2>
                 </div>
+                <!--News details from scrape-->
                 <h3>{{ dict.mars_news.news_title }}</h3>
                 <p>{{ dict.mars_news.news_paragraph }}</p>
             </div>
         </div>
 
-        <div class="container" id="feat_img">
+        <!--Image & Table Container-->
+        <div class="container" id="image-table">
+            <!--Featured Mars Image: Left-->
             <div class="row">
-                <!--Featured Mars Image: Left-->
+                <!--Image Title-->
                 <div class="col-md-8" id="item-title">
                     <h2>Featured Mars Image</h2>
-                </div>
+                
+                <!--Image from scrape-->
                 <img src="{{ dict.jpl_feat_image.feat_image_url }}"/>
-
+              </div>
                 <!--Mars Facts table: Right-->
-                <div class="col-md-4" id="table-title">
+                <div class="col-md-4" id="item-title">
+                  <div class="table-responsive-xl">
                     <h2>Mars Facts</h2>
-                    <table class="dataframe table table-striped table-bordered table-hover">
-                        <thead>
-                          <tr style="text-align: center;">
-                            <th></th>
-                            <th>Mars</th>
-                            <th>Earth</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th>Diameter:</th>
-                            <td>6,779 km</td>
-                            <td>12,742 km</td>
-                          </tr>
-                          <tr>
-                            <th>Mass:</th>
-                            <td>6.39 × 10^23 kg</td>
-                            <td>5.97 × 10^24 kg</td>
-                          </tr>
-                          <tr>
-                            <th>Moons:</th>
-                            <td>2</td>
-                            <td>1</td>
-                          </tr>
-                          <tr>
-                            <th>Distance from Sun:</th>
-                            <td>227,943,824 km</td>
-                            <td>149,598,262 km</td>
-                          </tr>
-                          <tr>
-                            <th>Length of Year:</th>
-                            <td>687 Earth days</td>
-                            <td>365.24 days</td>
-                          </tr>
-                          <tr>
-                            <th>Temperature:</th>
-                            <td>-87 to -5 °C</td>
-                            <td>-88 to 58°C</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    <!--{{ dict.mars_facts.table }}-->
-                 
-                    
+                    <!--Table from scrape-->
+                    {{ dict.mars_facts.table|safe }}
+                  </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <!--Hemispheres Picture Gallery-->
+        <div class="container" id="picture-gallery">
             <!--Title for Hemispheres Picture Gallery-->
             <div class="row">
                 <div class="col-md-12" id="item-title">
@@ -99,15 +68,19 @@
                 </div>
             </div>
 
-            <div class="row">
-            {% for x in dict.hemisphere_image_urls %}
             <!--Hemispheres Picture Gallery-->
+            <div class="row">
+            <!--For loop to access the scraped list-->
+            {% for x in dict.hemisphere_image_urls %}
                 <div class="col-md-3">
-                    <div class="card" style="width: 12rem;">
+                  <div class="card-group">
+                    <div class="card text-center" style="width: 12rem;">
+                        <!--Images & titles from scrape-->
                         <img class="card-img-top" src="{{ x.img_url }}" alt="{{ x.title }}">
                         <div class="card-body">
                             <p class="card-text">{{ x.title }}</p>
                         </div>
+                      </div>
                     </div>  
                 </div>
                 {% endfor %} 

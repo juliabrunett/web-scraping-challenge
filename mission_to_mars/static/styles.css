@@ -1,0 +1,96 @@
+/* Main Title: h1 */ 
+#main-title h1 {
+
+}
+
+/* Item Titles: h2 */
+#item-title h2 {
+    padding: 10px;
+    
+}
+
+/* Table Title: h2 */
+#table-title h2 {
+    padding: 10px;
+}
+
+
+/* Image & Table Container: Image */
+#image-table img {
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    align: center;
+}
+
+/* General h2 */
+h2 {
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* General h1 */
+h1 {
+    padding: 10px;
+    font-size: 50px;
+}
+
+/* General h3 */
+h3 {
+    padding: 10px;
+    font-size: 20px;
+}
+
+/* General paragraph */
+p {
+    padding: 10px;
+    font-size: 15px;
+}
+
+/* General container */
+.container {
+    padding: 10px;
+}
+
+/* Mars News Container */
+.container #mars-news {
+    padding: 30px;
+}
+
+.container #image-table {
+    margin-bottom: 30px;
+}
+
+/* Picture Gallery */
+#picture-gallery {
+    padding: 20px;
+}
+
+@media (max-width: 767px) {
+
+    /* General h2 */
+h2 {
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+/* General h1 */
+h1 {
+    padding: 10px;
+    font-size: 35px;
+}
+
+/* General h3 */
+h3 {
+    padding: 10px;
+    font-size: 20px;
+}
+
+}
+
+.card {
+
+}
+}
