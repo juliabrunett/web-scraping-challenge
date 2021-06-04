@@ -36,7 +36,7 @@
                 <p>{{ dict.mars_news.news_paragraph }}</p>
             </div>
         </div>
-
+      <hr/>
         <!--Image & Table Container-->
         <div class="container" id="image-table">
             <!--Featured Mars Image: Left-->
@@ -44,6 +44,8 @@
                 <!--Image Title-->
                 <div class="col-md-8" id="item-title">
                     <h2>Featured Mars Image</h2>
+                    <hr/>
+                    
                 
                 <!--Image from scrape-->
                 <img src="{{ dict.jpl_feat_image.feat_image_url }}"/>
@@ -52,13 +54,15 @@
                 <div class="col-md-4" id="item-title">
                   <div class="table-responsive-xl">
                     <h2>Mars Facts</h2>
+                    <hr/>
+                    <h3>Comparisons to Earth</h3>
                     <!--Table from scrape-->
                     {{ dict.mars_facts.table|safe }}
                   </div>
                 </div>
             </div>
         </div>
-
+        <hr/>
         <!--Hemispheres Picture Gallery-->
         <div class="container" id="picture-gallery">
             <!--Title for Hemispheres Picture Gallery-->

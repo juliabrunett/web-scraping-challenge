@@ -1,3 +1,6 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 /* Main Title: h1 */ 
 #main-title h1 {
 
@@ -9,6 +12,10 @@
     
 }
 
+#item-title h3 {
+    text-align: center;
+}
+
 /* Table Title: h2 */
 #table-title h2 {
     padding: 10px;
@@ -17,6 +24,7 @@
 
 /* Image & Table Container: Image */
 #image-table img {
+    margin-top: 40px;
     padding: 10px;
     width: 100%;
     height: auto;
@@ -28,6 +36,7 @@ h2 {
     padding: 10px;
     text-align: center;
     font-size: 30px;
+    color: #d37f3acb;
 }
 
 /* General h1 */
@@ -40,6 +49,12 @@ h1 {
 h3 {
     padding: 10px;
     font-size: 20px;
+    
+}
+
+.btn-primary {
+    background-color: #d37f3acb;
+    border-color: #d37f3acb;
 }
 
 /* General paragraph */
@@ -88,9 +103,15 @@ h3 {
     font-size: 20px;
 }
 
+
+/* Image & Table Container: Image */
+#image-table img {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    align: center;
 }
 
-.card {
-
-}
 }
