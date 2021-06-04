@@ -8,10 +8,10 @@ import pymongo
 app = Flask(__name__)
 
 # Connect to the database
-#mars_db = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 conn = "mongodb://localhost:27017"
 client = pymongo.MongoClient(conn)
 
+# Create a mars_db and a mars collection
 db = client.mars_db
 mars = db.mars
 

@@ -2,15 +2,15 @@
     background-color: grey;
 }
 
-#item-title {
-
+#item-title h2 {
+    padding: 10px;
 }
 
-#table-title {
-
+#table-title h2 {
+    padding: 10px;
 }
 
-#card {
-    width: 25%
+#feat_img img {
+    padding: 10px;
 }
 
