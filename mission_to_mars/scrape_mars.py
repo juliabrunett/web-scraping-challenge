@@ -37,6 +37,7 @@ def scrape_data():
             "news_paragraph": news_p
         }
 
+        # Print in terminal
         print(mars_news)
 
     #2
@@ -70,6 +71,7 @@ def scrape_data():
             "feat_image_url": featured_image_url
         }
         
+        # Print in terminal
         print(jpl_feat_image)
     
     #3
@@ -84,35 +86,12 @@ def scrape_data():
     mars_earth_df = mars_earth_df.rename(columns = mars_earth_df.iloc[0])
     mars_earth_df = mars_earth_df.set_index("Mars - Earth Comparison")
     mars_earth_df = mars_earth_df.iloc[1:]
+    
+    # Print in terminal
     print(mars_earth_df)
 
     # Create html table for mars facts
     html_table = mars_earth_df.to_html(index_names=False, justify="center", border = 0, classes=["table", "table-striped", "table-bordered", "table-hover"])
-
-    main_header_list = []
-    header_list = []
-    data_list = []
-
-    soup = bs(html_table, 'html.parser')
-    headers = soup.find_all('th')
-    data = soup.find_all('td')
-    
-    for x in range(0,3):
-        main_header_list.append(headers[x].text)
-
-    for x in range(3,9):
-        header_list.append(headers[x].text)
-    
-    for x in data:
-        data_list.append(x.text)
-
-    # Create a dictionary for the html table
-    mars_facts = {
-        "main_headers": main_header_list,
-        "headers": header_list,
-        "data": data_list,
-        "table": html_table
-    }
 
     #4
     # Define the url
@@ -130,8 +109,6 @@ def scrape_data():
     
     # Get the 4 descriptions for the website - h3
     descriptions = soup.find_all('h3', limit=4)
-
-
 
     # Iterate through the descriptions
     for title in descriptions:
@@ -167,11 +144,10 @@ def scrape_data():
         # Navigate back to the main page
         browser.back()
 
-        #time.sleep(2)
-
+        # Print in terminal
         print(hemisphere_image_urls)
 
-    # close the browser
+    # Close the browser
     browser.quit()
 
     # Put all dictionaries together

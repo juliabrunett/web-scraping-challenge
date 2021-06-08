@@ -1,9 +1,6 @@
+/* Body */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-/* Main Title: h1 */ 
-#main-title h1 {
-
 }
 
 /* Item Titles: h2 */
@@ -12,6 +9,7 @@ body {
     
 }
 
+/* Item Titles: h3 */
 #item-title h3 {
     text-align: center;
 }
@@ -21,14 +19,13 @@ body {
     padding: 10px;
 }
 
-
 /* Image & Table Container: Image */
 #image-table img {
     margin-top: 40px;
     padding: 10px;
     width: 100%;
     height: auto;
-    align: center;
+    box-align: center;
 }
 
 /* General h2 */
@@ -52,6 +49,7 @@ h3 {
     
 }
 
+/* Primary Button: "Scrape" */
 .btn-primary {
     background-color: #d37f3acb;
     border-color: #d37f3acb;
@@ -73,6 +71,7 @@ p {
     padding: 30px;
 }
 
+/* Imaage & Table Container */
 .container #image-table {
     margin-bottom: 30px;
 }
@@ -82,36 +81,36 @@ p {
     padding: 20px;
 }
 
+/* Media Query */
 @media (max-width: 767px) {
 
     /* General h2 */
-h2 {
-    padding: 10px;
-    text-align: center;
-    font-size: 25px;
-}
+    h2 {
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+    }
 
-/* General h1 */
-h1 {
-    padding: 10px;
-    font-size: 35px;
-}
+    /* General h1 */
+    h1 {
+        padding: 10px;
+        font-size: 35px;
+    }
 
-/* General h3 */
-h3 {
-    padding: 10px;
-    font-size: 20px;
-}
+    /* General h3 */
+    h3 {
+        padding: 10px;
+        font-size: 20px;
+    }
 
-
-/* Image & Table Container: Image */
-#image-table img {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 10px;
-    width: 100%;
-    height: auto;
-    align: center;
-}
+    /* Image & Table Container: Image */
+    #image-table img {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding: 10px;
+        width: 100%;
+        height: auto;
+        box-align: center;
+    }
 
 }
