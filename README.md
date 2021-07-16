@@ -8,3 +8,12 @@
 - *mission_to_mars.ipynb:* jupyter notebook with web-scraping code
 - *scrape_mars.py:* python file with web-scraping code from the jupyter notebook
 - ***Screenshots:*** folder with screenshots of the final application's webpage
+
+# Top of Page
+![Top Page](mission_to_mars/Screenshots/web_page_1.png)
+
+# Middle of Page
+![Middle Page](mission_to_mars/Screenshots/web_page_2.png)
+
+# End of Page
+![End Page](mission_to_mars/Screenshots/web_page_3.png)
